@@ -1,10 +1,10 @@
-import React from 'react';
-import { useParams } from 'react-router-dom';
+import { motion } from 'framer-motion';
 
 const Category = ({ type: propsType }) => {
+    // ... data ...
     const { type: paramType } = useParams();
     const type = propsType || paramType;
-
+    // ... categoryData ...
     const categoryData = {
         jets: { 
             title: 'Jets Sea-Doo 2026', 
@@ -87,32 +87,68 @@ const Category = ({ type: propsType }) => {
 
     const current = categoryData[type] || categoryData.jets;
 
+    const fadeInUp = {
+        initial: { opacity: 0, y: 30 },
+        animate: { opacity: 1, y: 0 },
+        transition: { duration: 0.6 }
+    };
+
+    const staggerContainer = {
+        animate: {
+            transition: {
+                staggerChildren: 0.1
+            }
+        }
+    };
+
     return (
         <div className="category-page">
-            <header className="page-header" style={{ 
-                backgroundImage: `linear-gradient(to bottom, rgba(0,0,0,0.8), var(--background)), url(${current.bg})`, 
-                backgroundSize: 'cover', 
-                backgroundPosition: 'center', 
-                height: '450px', 
-                display: 'flex', 
-                alignItems: 'center', 
-                justifyContent: 'center',
-                textAlign: 'center'
-            }}>
-                <div className="container">
-                    <img src={current.logo} alt="Brand" style={{ height: '40px', marginBottom: '20px' }} className="animate-up" />
-                    <h1 className="animate-up" style={{ fontSize: '3.5rem' }}>{current.title}</h1>
-                    <p className="animate-up" style={{ opacity: 0.8, marginTop: '10px', maxWidth: '600px', margin: '15px auto 0' }}>
+            <motion.header 
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ duration: 1 }}
+                className="page-header" 
+                style={{ 
+                    backgroundImage: `linear-gradient(to bottom, rgba(0,0,0,0.8), var(--background)), url(${current.bg})`, 
+                    backgroundSize: 'cover', 
+                    backgroundPosition: 'center', 
+                    height: '450px', 
+                    display: 'flex', 
+                    alignItems: 'center', 
+                    justifyContent: 'center',
+                    textAlign: 'center'
+                }}
+            >
+                <motion.div 
+                    initial={{ y: 30, opacity: 0 }}
+                    animate={{ y: 0, opacity: 1 }}
+                    transition={{ duration: 0.8, delay: 0.2 }}
+                    className="container"
+                >
+                    <img src={current.logo} alt="Brand" style={{ height: '40px', marginBottom: '20px' }} />
+                    <h1 style={{ fontSize: 'clamp(2rem, 8vw, 3.5rem)' }}>{current.title}</h1>
+                    <p style={{ opacity: 0.8, marginTop: '10px', maxWidth: '600px', margin: '15px auto 0' }}>
                         Explore a melhor experiência com a tecnologia líder mundial.
                     </p>
-                </div>
-            </header>
+                </motion.div>
+            </motion.header>
 
             <section className="section-padding">
                 <div className="container">
-                    <div className="products-grid animate-up">
+                    <motion.div 
+                        variants={staggerContainer}
+                        initial="initial"
+                        whileInView="animate"
+                        viewport={{ once: true, margin: "-100px" }}
+                        className="products-grid"
+                    >
                         {current.products.map((product, index) => (
-                            <div key={index} className="product-card">
+                            <motion.div 
+                                key={index} 
+                                variants={fadeInUp}
+                                whileHover={{ y: -10 }}
+                                className="product-card"
+                            >
                                 <div className="product-image">
                                     <img src={product.img} alt={product.name} />
                                 </div>
@@ -122,9 +158,9 @@ const Category = ({ type: propsType }) => {
                                         Consultar Preço
                                     </a>
                                 </div>
-                            </div>
+                            </motion.div>
                         ))}
-                    </div>
+                    </motion.div>
                 </div>
             </section>
         </div>

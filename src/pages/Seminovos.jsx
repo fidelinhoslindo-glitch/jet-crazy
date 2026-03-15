@@ -1,4 +1,4 @@
-import React from 'react';
+import { motion } from 'framer-motion';
 import { Camera, Zap, Clock, Gauge } from 'lucide-react';
 
 const Seminovos = () => {
@@ -18,27 +18,73 @@ const Seminovos = () => {
         { title: 'Can-Am Defender Max HD9 - 2025', img: '/wp-content/uploads/2026/02/04-Defender-HD9-MAX.jpg', year: '2025', detail: '205km', type: 'km' }
     ];
 
+    const fadeInUp = {
+        initial: { opacity: 0, y: 30 },
+        whileInView: { opacity: 1, y: 0 },
+        viewport: { once: true },
+        transition: { duration: 0.6 }
+    };
+
+    const staggerContainer = {
+        animate: {
+            transition: {
+                staggerChildren: 0.1
+            }
+        }
+    };
+
     return (
         <div className="seminovos-hub">
-            <header className="page-header">
+            <motion.header 
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ duration: 1 }}
+                className="page-header"
+            >
                 <div className="container">
-                    <h1 className="animate-up">Nossos Seminovos</h1>
-                    <p className="animate-up" style={{ color: 'var(--text-muted)', fontSize: '1.2rem', maxWidth: '700px', margin: '0 auto' }}>
+                    <motion.h1 
+                        initial={{ y: 20, opacity: 0 }}
+                        animate={{ y: 0, opacity: 1 }}
+                        transition={{ duration: 0.8, delay: 0.2 }}
+                    >
+                        Nossos Seminovos
+                    </motion.h1>
+                    <motion.p 
+                        initial={{ y: 20, opacity: 0 }}
+                        animate={{ y: 0, opacity: 1 }}
+                        transition={{ duration: 0.8, delay: 0.4 }}
+                        style={{ color: 'var(--text-muted)', fontSize: '1.2rem', maxWidth: '700px', margin: '0 auto' }}
+                    >
                         As melhores oportunidades em veículos premium revisados e com garantia de procedência.
-                    </p>
+                    </motion.p>
                 </div>
-            </header>
+            </motion.header>
 
             {/* Water Section */}
             <section className="section-padding">
                 <div className="container">
-                    <div className="section-title animate-up" style={{ marginBottom: '40px', display: 'flex', alignItems: 'center', gap: '15px' }}>
+                    <motion.div 
+                        {...fadeInUp}
+                        className="section-title" 
+                        style={{ marginBottom: '40px', display: 'flex', alignItems: 'center', gap: '15px' }}
+                    >
                         <div style={{ width: '40px', height: '2px', background: 'var(--primary)' }}></div>
                         <h2 style={{ fontSize: '2rem' }}>Água (Jets)</h2>
-                    </div>
-                    <div className="products-grid animate-up">
+                    </motion.div>
+                    <motion.div 
+                        variants={staggerContainer}
+                        initial="initial"
+                        whileInView="animate"
+                        viewport={{ once: true, margin: "-50px" }}
+                        className="products-grid"
+                    >
                         {seaDooProducts.map((p, i) => (
-                            <div key={i} className="product-card">
+                            <motion.div 
+                                key={i} 
+                                variants={fadeInUp} 
+                                whileHover={{ y: -10 }}
+                                className="product-card"
+                            >
                                 <div className="product-image">
                                     <img src={p.img} alt={p.title} />
                                 </div>
@@ -55,22 +101,37 @@ const Seminovos = () => {
                                         Tenho Interesse
                                     </a>
                                 </div>
-                            </div>
+                            </motion.div>
                         ))}
-                    </div>
+                    </motion.div>
                 </div>
             </section>
 
             {/* Rodas Section */}
             <section className="section-padding" style={{ background: 'var(--surface)' }}>
                 <div className="container">
-                    <div className="section-title animate-up" style={{ marginBottom: '40px', display: 'flex', alignItems: 'center', gap: '15px' }}>
+                    <motion.div 
+                        {...fadeInUp}
+                        className="section-title" 
+                        style={{ marginBottom: '40px', display: 'flex', alignItems: 'center', gap: '15px' }}
+                    >
                         <div style={{ width: '40px', height: '2px', background: 'var(--secondary)' }}></div>
                         <h2 style={{ fontSize: '2rem' }}>Rodas (Quadris & UTVs)</h2>
-                    </div>
-                    <div className="products-grid animate-up">
+                    </motion.div>
+                    <motion.div 
+                        variants={staggerContainer}
+                        initial="initial"
+                        whileInView="animate"
+                        viewport={{ once: true, margin: "-50px" }}
+                        className="products-grid"
+                    >
                         {canAmProducts.map((p, i) => (
-                            <div key={i} className="product-card">
+                            <motion.div 
+                                key={i} 
+                                variants={fadeInUp} 
+                                whileHover={{ y: -10 }}
+                                className="product-card"
+                            >
                                 <div className="product-image">
                                     <img src={p.img} alt={p.title} />
                                 </div>
@@ -87,9 +148,9 @@ const Seminovos = () => {
                                         Tenho Interesse
                                     </a>
                                 </div>
-                            </div>
+                            </motion.div>
                         ))}
-                    </div>
+                    </motion.div>
                 </div>
             </section>
         </div>
