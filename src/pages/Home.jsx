@@ -1,8 +1,10 @@
+import React, { useState, useEffect } from 'react';
+import { ArrowRight, Instagram } from 'lucide-react';
+import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 
 const Home = () => {
     const [currentSlide, setCurrentSlide] = useState(0);
-    // ... slides ...
     const slides = [
         {
             img: '/wp-content/uploads/2023/08/Banner-SeaDoo-MY26.jpg',
