@@ -87,10 +87,10 @@ const Home = () => {
                             <img src="/wp-content/uploads/2025/10/Box-Agua-2026.jpg" alt="Jets" />
                             <div className="banner-overlay"><span>Jets</span></div>
                         </Link>
-                        <a href="https://jetcrazy.mercadoshops.com.br/" className="category-banner" target="_blank" rel="noopener noreferrer">
+                        <Link to="/boutique" className="category-banner">
                             <img src="/wp-content/uploads/2025/10/Box-Boutique-2026.jpg" alt="Boutique" />
                             <div className="banner-overlay"><span>Boutique</span></div>
-                        </a>
+                        </Link>
                         <Link to="/utvs" className="category-banner">
                             <img src="/wp-content/uploads/2025/10/Box-Rodas-2026.jpg" alt="UTVs & Quadriciclos" />
                             <div className="banner-overlay"><span>UTVs & Quadris</span></div>
