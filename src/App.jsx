@@ -6,6 +6,7 @@ import Category from './pages/Category';
 import Seminovos from './pages/Seminovos';
 import Lojas from './pages/Lojas';
 import Servicos from './pages/Servicos';
+import { Analytics } from '@vercel/analytics/react';
 
 function App() {
   return (
@@ -22,6 +23,7 @@ function App() {
           <Route path="/servicos" element={<Servicos />} />
         </Routes>
       </Layout>
+      <Analytics />
     </Router>
   );
 }
