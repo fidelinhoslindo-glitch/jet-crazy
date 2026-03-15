@@ -54,6 +54,7 @@ const Footer = () => {
                     <div className="footer-bottom-links" style={{ display: 'flex', gap: '20px', fontSize: '0.8rem' }}>
                         <Link to="/privacidade" style={{ color: '#A0A0A0' }}>Privacidade</Link>
                         <Link to="/servicos" style={{ color: '#A0A0A0' }}>Serviços</Link>
+                        <Link to="/boutique" style={{ color: '#A0A0A0' }}>Boutique</Link>
                     </div>
                 </div>
             </div>

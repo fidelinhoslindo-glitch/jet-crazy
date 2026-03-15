@@ -6,6 +6,7 @@ import Category from './pages/Category';
 import Seminovos from './pages/Seminovos';
 import Lojas from './pages/Lojas';
 import Servicos from './pages/Servicos';
+import Boutique from './pages/Boutique';
 import { Analytics } from '@vercel/analytics/react';
 
 function App() {
@@ -21,6 +22,7 @@ function App() {
           <Route path="/seminovos" element={<Seminovos />} />
           <Route path="/lojas" element={<Lojas />} />
           <Route path="/servicos" element={<Servicos />} />
+          <Route path="/boutique" element={<Boutique />} />
         </Routes>
       </Layout>
       <Analytics />
