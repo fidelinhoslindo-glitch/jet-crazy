@@ -134,19 +134,16 @@ const Home = () => {
                         <motion.div variants={fadeInUp}>
                             <Link to="/jets" className="category-banner">
                                 <img src="/wp-content/uploads/2025/10/Box-Agua-2026.jpg" alt="Jets" />
-                                <div className="banner-overlay"><span>Jets</span></div>
                             </Link>
                         </motion.div>
                         <motion.div variants={fadeInUp}>
                             <Link to="/boutique" className="category-banner">
                                 <img src="/wp-content/uploads/2025/10/Box-Boutique-2026.jpg" alt="Boutique" />
-                                <div className="banner-overlay"><span>Boutique</span></div>
                             </Link>
                         </motion.div>
                         <motion.div variants={fadeInUp}>
                             <Link to="/utvs" className="category-banner">
                                 <img src="/wp-content/uploads/2025/10/Box-Rodas-2026.jpg" alt="UTVs & Quadriciclos" />
-                                <div className="banner-overlay"><span>UTVs & Quadris</span></div>
                             </Link>
                         </motion.div>
                     </motion.div>
